@@ -32,7 +32,7 @@ const Header = () => {
               Search
             </button>
           </form>
-          <Avatar name="Gizem Candemir" round size="50" color="#0055D1" />
+          <Avatar name="Mohammadjavad Salehi" round size="50" color="#0055D1" />
         </div>
       </div>
 
