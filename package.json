@@ -23,6 +23,7 @@
     "@types/react-beautiful-dnd": "^13.1.6",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "openai": "^3.2.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.0",
     "postcss": "^8",
