@@ -15,6 +15,7 @@ const idToColumnText: {
   todo: "To Do",
   inprogress: "In Progress",
   done: "Done",
+  review: "review",
 };
 
 function Column({ id, todos, index }: Props) {

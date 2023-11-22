@@ -29,7 +29,7 @@ export const getTodosGroupedByColumn = async () => {
   }, new Map<TypedColumn, Column>());
 
   // if the columns does not have inprogress, todo and done, add them with empty todos
-  const columnTypes: TypedColumn[] = ["todo", "inprogress", "done"];
+  const columnTypes: TypedColumn[] = ["todo", "inprogress", "done", "review"];
 
   for (const columnType of columnTypes) {
     if (!columns.has(columnType)) {
