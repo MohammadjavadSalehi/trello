@@ -1,14 +1,10 @@
-interface Board {
-  columns: Map<TypedColumn, Column>;
-}
-
 import { Models } from "appwrite";
 
 interface Board {
   columns: Map<TypedColumn, Column>;
 }
 
-type TypedColumn = "todo" | "inprogress" | "done" | "review";
+type TypedColumn = "todo" | "inprogress" | "done";
 
 interface Column {
   id: TypedColumn;

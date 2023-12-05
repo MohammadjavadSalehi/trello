@@ -7,7 +7,7 @@ const getTodosGroupedByColumn = async () => {
     process.env.NEXT_PUBLIC_TODOS_COLLECTION_ID!
   );
 
-  const todos = data.documents as Todo[];
+  const todos = data.documents;
 
   const columns = todos.reduce((acc, todo) => {
     if (!acc.get(todo.status)) {
@@ -22,7 +22,7 @@ const getTodosGroupedByColumn = async () => {
       $createdAt: todo.$createdAt,
       title: todo.title,
       status: todo.status,
-      ...(todo.image && { image: JSON.parse(todo.image) as Image }),
+      ...(todo.image && { image: JSON.parse(todo.image) }),
     });
 
     return acc;
