@@ -1,12 +1,13 @@
 import { databases } from "@/appwrite";
+import { Board, Column, Image, Todo, TypedColumn } from "@/typings";
 
-export const getTodosGroupedByColumn = async () => {
+const getTodosGroupedByColumn = async () => {
   const data = await databases.listDocuments(
     process.env.NEXT_PUBLIC_DATABASE_ID!,
     process.env.NEXT_PUBLIC_TODOS_COLLECTION_ID!
   );
 
-  const todos = data.documents;
+  const todos = data.documents as Todo[];
 
   const columns = todos.reduce((acc, todo) => {
     if (!acc.get(todo.status)) {
@@ -21,18 +22,17 @@ export const getTodosGroupedByColumn = async () => {
       $createdAt: todo.$createdAt,
       title: todo.title,
       status: todo.status,
-      //get the image only if it exists in the response
-      ...(todo.image && { image: JSON.parse(todo.image) }),
+      ...(todo.image && { image: JSON.parse(todo.image) as Image }),
     });
 
     return acc;
   }, new Map<TypedColumn, Column>());
 
-  // if the columns does not have inprogress, todo and done, add them with empty todos
-  const columnTypes: TypedColumn[] = ["todo", "inprogress", "done", "review"];
+  // if columns doesnt have the typedColumns, add them with empty todos
+  const columnTypes: TypedColumn[] = ["todo", "inprogress", "done"];
 
   for (const columnType of columnTypes) {
-    if (!columns.has(columnType)) {
+    if (!columns.get(columnType)) {
       columns.set(columnType, {
         id: columnType,
         todos: [],
@@ -40,7 +40,7 @@ export const getTodosGroupedByColumn = async () => {
     }
   }
 
-  // sorting the columns by the order of the columnTypes
+  // sort columns now
   const sortedColumns = new Map(
     Array.from(columns.entries()).sort(
       (a, b) => columnTypes.indexOf(a[0]) - columnTypes.indexOf(b[0])
@@ -53,3 +53,5 @@ export const getTodosGroupedByColumn = async () => {
 
   return board;
 };
+
+export default getTodosGroupedByColumn;
