@@ -104,7 +104,7 @@ function Board() {
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
-            className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-7xl mx-auto"
+            className="grid p-5 md:p-0 grid-cols-1 md:grid-cols-4 gap-5 max-w-7xl mx-auto"
           >
             {Array.from(board.columns.entries()).map(([id, column], index) => (
               <ColumnComponent

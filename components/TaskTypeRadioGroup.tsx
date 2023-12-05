@@ -27,6 +27,13 @@ const types: TaskType[] = [
         color: "bg-green-500",
         ringColor: "ring-offset-green-300",
     },
+    {
+        id: "review",
+        name: "Review",
+        description: "A task that is being reviewed",
+        color: "bg-blue-500",
+        ringColor: "ring-offset-blue-300",
+    },
 ];
 
 function TaskTypeRadioGroup() {

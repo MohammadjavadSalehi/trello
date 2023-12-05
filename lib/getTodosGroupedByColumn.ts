@@ -29,7 +29,7 @@ const getTodosGroupedByColumn = async () => {
   }, new Map<TypedColumn, Column>());
 
   // if columns doesnt have the typedColumns, add them with empty todos
-  const columnTypes: TypedColumn[] = ["todo", "inprogress", "done"];
+  const columnTypes: TypedColumn[] = ["todo", "inprogress", "done", "review"];
 
   for (const columnType of columnTypes) {
     if (!columns.get(columnType)) {
