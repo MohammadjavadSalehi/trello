@@ -2,6 +2,12 @@ interface Board {
   columns: Map<TypedColumn, Column>;
 }
 
+import { Models } from "appwrite";
+
+interface Board {
+  columns: Map<TypedColumn, Column>;
+}
+
 type TypedColumn = "todo" | "inprogress" | "done" | "review";
 
 interface Column {
@@ -9,7 +15,7 @@ interface Column {
   todos: Todo[];
 }
 
-interface Todo {
+interface Todo extends Models.Document {
   $id: string;
   $createdAt: string;
   title: string;
@@ -20,4 +26,12 @@ interface Todo {
 interface Image {
   bucketId: string;
   fileId: string;
+}
+
+interface TaskType {
+  id: TypedColumn;
+  name: string;
+  description: string;
+  color: string;
+  ringColor: string;
 }
