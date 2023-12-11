@@ -13,6 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="https://trello.com/assets/8d4bcc6f7600ccbb6675.svg" />
+      </head>
       <body className="bg-secondary">
         {children}
         <Modal></Modal>
